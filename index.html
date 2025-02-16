@@ -8,5 +8,37 @@
 <body>
     <p>Hello Welcome to Rieo's website</p>
     <!-- <p>Hello !</p> -->
+     <div id="clock"></div>
+     <script>
+        function updateClock() {
+            const clockElement = document.getElementById('clock');
+            const now = new Date();
+
+            // Format the time
+            const hours = now.getHours();
+            const minutes = now.getMinutes();
+            const seconds = now.getSeconds();
+            const ampm = hours >= 12 ? 'PM' : 'AM';
+
+            // Format hours to 12-hour clock
+            const formattedHours = hours % 12 || 12;
+
+            // Pad minutes and seconds with leading zeros
+            const formattedMinutes = minutes.toString().padStart(2, '0');
+            const formattedSeconds = seconds.toString().padStart(2, '0');
+
+            // Combine into a time string
+            const timeString = `${formattedHours}:${formattedMinutes}:${formattedSeconds}&nbsp${ampm}`;
+
+            // Update the clock element
+            clockElement.innerHTML = timeString;
+        }
+
+        // Update the clock every second
+        setInterval(updateClock, 1000);
+
+        // Initial call to display clock immediately
+        updateClock();
+    </script>
 </body>
 </html>
